@@ -18,7 +18,7 @@ interface TimeLeft {
 }
 
 const calculateTimeLeft = (targetDate: string): TimeLeft | null => {
-  const difference = +new Date(targetDate) - +new Date();
+  const difference = +new Date(targetDate) - +new anio();
   if (difference > 0) {
     return {
       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -64,7 +64,7 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
             className="relative w-screen h-screen text-white overflow-hidden"
             style={{ background: `url('/zavertv.png') center center / cover no-repeat` }}
         >
-            <div className="absolute left-0 right-0 text-5xl flex justify-center" style={{ bottom: '300px' }}>
+            <div className="absolute left-0 right-0 text-5xl flex justify-center" style={{ bottom: '285px' }}>
                  {timeLeft ? (
                     <div className="flex justify-center">
                         <div className="bg-black rounded-lg pt-3 pb-8 px-8 inline-flex items-center justify-center gap-x-2">
