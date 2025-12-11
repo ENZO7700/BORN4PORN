@@ -3,7 +3,8 @@
 
 import { useLanguage } from '@/context/language-context';
 import { cn } from '@/lib/utils';
-import { useEffect, useState } from 'react';
+import { useEffect, useState }
+from 'react';
 
 interface TimeLeft {
   days: number;
@@ -76,12 +77,18 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
             style={{ background: `url('/zavertv.png') center center / cover no-repeat` }}
         >
             <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: '260px' }}>
-                 {isClient && timeLeft && (
+                 {isClient && (
                     <div className="bg-black rounded-lg pb-8 pt-7 px-8 inline-flex items-start justify-center gap-x-6 md:gap-x-10">
-                        <TimerBox value={timeLeft.days} label={t('countdown_days')} />
-                        <TimerBox value={timeLeft.hours} label={t('countdown_hours')} />
-                        <TimerBox value={timeLeft.minutes} label={t('countdown_minutes')} />
-                        <TimerBox value={timeLeft.seconds} label={t('countdown_seconds')} />
+                        {timeLeft ? (
+                            <>
+                                <TimerBox value={timeLeft.days} label={t('countdown_days')} />
+                                <TimerBox value={timeLeft.hours} label={t('countdown_hours')} />
+                                <TimerBox value={timeLeft.minutes} label={t('countdown_minutes')} />
+                                <TimerBox value={timeLeft.seconds} label={t('countdown_seconds')} />
+                            </>
+                        ) : (
+                            <div className="bg-black h-[125px] w-[460px] rounded-md"></div>
+                        )}
                     </div>
                 )}
             </div>
