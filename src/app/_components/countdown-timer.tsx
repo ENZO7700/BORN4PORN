@@ -59,11 +59,16 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
 
     const timer = setInterval(() => {
       const newTimeLeft = calculateTimeLeft(targetDate);
-      setTimeLeft(newTimeLeft);
+      if (newTimeLeft) {
+          setTimeLeft(newTimeLeft);
+      } else {
+          // Keep the timer running but don't call onFinished
+          clearInterval(timer);
+      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate, onFinished]);
+  }, [targetDate]);
     
     return (
         <div 
@@ -72,7 +77,7 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
         >
             <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: '260px' }}>
                  {isClient && timeLeft && (
-                    <div className="bg-black/70 backdrop-blur-sm rounded-lg pb-8 pt-7 px-8 inline-flex items-start justify-center gap-x-6 md:gap-x-10">
+                    <div className="bg-black rounded-lg pb-8 pt-7 px-8 inline-flex items-start justify-center gap-x-6 md:gap-x-10">
                         <TimerBox value={timeLeft.days} label={t('countdown_days')} />
                         <TimerBox value={timeLeft.hours} label={t('countdown_hours')} />
                         <TimerBox value={timeLeft.minutes} label={t('countdown_minutes')} />
