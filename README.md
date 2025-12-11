@@ -1,4 +1,3 @@
-
 # born4slayada
 
 # BORN4PORN / Unicorn & Gametusy - Prototyp platformy
