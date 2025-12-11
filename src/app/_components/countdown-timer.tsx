@@ -54,9 +54,9 @@ const TimerBox = ({ value, label, isRed }: { value: number; label: string, isRed
 
 const Colon = () => (
     <div 
-        className="text-5xl md:text-7xl font-mono font-extrabold text-red-500 self-center pb-8"
+        className="text-5xl md:text-7xl font-mono font-extrabold text-white self-center pb-8"
         style={{
-             textShadow: '0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 0, 0, 0.5)'
+             textShadow: '0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5)'
         }}
     >:</div>
 );
@@ -68,7 +68,6 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
 
   useEffect(() => {
     setIsClient(true);
-    // Initial calculation
     setTimeLeft(calculateTimeLeft(targetDate));
 
     const timer = setInterval(() => {
@@ -76,9 +75,8 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
       if (newTimeLeft) {
           setTimeLeft(newTimeLeft);
       } else {
-          // Keep the timer running but don't call onFinished
           clearInterval(timer);
-          setTimeLeft(null); // Reset to show placeholder
+          setTimeLeft(null);
       }
     }, 1000);
 
