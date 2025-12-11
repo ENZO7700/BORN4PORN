@@ -67,7 +67,7 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
             <div className="absolute left-0 right-0 text-6xl" style={{ bottom: '230px' }}>
                  {timeLeft ? (
                     <div className="flex justify-center">
-                        <div className="bg-black rounded-lg p-4 inline-flex items-center justify-center gap-x-4">
+                        <div className="bg-black rounded-lg p-4 px-2 inline-flex items-center justify-center gap-x-4">
                             <TimeSlot value={timeLeft.days} />
                             <Colon />
                             <TimeSlot value={timeLeft.hours} />
