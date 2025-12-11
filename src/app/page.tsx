@@ -14,18 +14,18 @@ export default function HomePage() {
 
   useEffect(() => {
     setIsClient(true);
-    // Check if countdown is already finished on mount
+    // On initial load, check if the countdown has already finished.
     if (new Date() > new Date(TARGET_DATE)) {
-      setIsCountdownFinished(true);
-      router.replace('/homepage');
+      handleCountdownFinish();
     }
-  }, [router]);
+  }, []);
 
   const handleCountdownFinish = () => {
     setIsCountdownFinished(true);
     router.replace('/homepage');
   };
   
+  // While waiting for the client to mount, show a simple loader.
   if (!isClient) {
       return (
           <div className="flex h-screen w-screen items-center justify-center bg-black">
@@ -34,6 +34,7 @@ export default function HomePage() {
       );
   }
 
+  // If the countdown is finished, show loader while redirecting.
   if (isCountdownFinished) {
     return (
         <div className="flex h-screen w-screen items-center justify-center bg-black">
@@ -42,5 +43,6 @@ export default function HomePage() {
     );
   }
 
+  // Otherwise, show the countdown timer.
   return <CountdownTimer targetDate={TARGET_DATE} onFinished={handleCountdownFinish} />;
 }
