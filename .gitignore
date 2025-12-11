@@ -35,6 +35,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# sensitive keys
-key.md
-*.keys
+# Ignore all markdown files
+*.md
+# But do not ignore the README.md file
+!README.md
