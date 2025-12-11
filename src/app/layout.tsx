@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Eroticon Platform',
+  title: 'BORN4BORN4BORN4',
   description: 'A new perspective on the adult entertainment industry.',
 };
 
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("dark", inter.variable, spaceGrotesk.variable)}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={cn("antialiased")}>
