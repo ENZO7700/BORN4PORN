@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useLanguage } from '@/context/language-context';
@@ -43,9 +42,13 @@ const Colon = () => <div className="text-white font-bold font-mono tracking-wide
 
 export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) {
     const { t } = useLanguage();
-    const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(calculateTimeLeft(targetDate));
+    const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+    const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
+        setIsClient(true);
+        setTimeLeft(calculateTimeLeft(targetDate));
+
         const timer = setInterval(() => {
             const newTimeLeft = calculateTimeLeft(targetDate);
             if (newTimeLeft) {
@@ -65,7 +68,7 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
             style={{ background: `url('/zavertv.png') center center / cover no-repeat` }}
         >
             <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: '260px' }}>
-                 {timeLeft ? (
+                 {isClient && timeLeft ? (
                     <div className="bg-black rounded-lg pb-8 pt-7 px-8 inline-flex items-center justify-center gap-x-2">
                         <div className="flex items-baseline gap-x-2 text-5xl">
                             <TimeSlot value={timeLeft.days} />
