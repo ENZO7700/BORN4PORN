@@ -3,18 +3,19 @@
 
 import { useLanguage } from '@/context/language-context';
 import { cn } from '@/lib/utils';
-import { useEffect, useState } from 'react';
-
-interface CountdownTimerProps {
-  targetDate: string;
-  onFinished: () => void;
-}
+import { useEffect, useState }
+from 'react';
 
 interface TimeLeft {
   days: number;
   hours: number;
   minutes: number;
   seconds: number;
+}
+
+interface CountdownTimerProps {
+  targetDate: string;
+  onFinished: () => void;
 }
 
 const calculateTimeLeft = (targetDate: string): TimeLeft | null => {
@@ -30,34 +31,57 @@ const calculateTimeLeft = (targetDate: string): TimeLeft | null => {
   return null;
 };
 
-const TimeSlot = ({ value, isSeconds }: { value: number; isSeconds?: boolean }) => (
-    <div className={cn(
-        "font-bold font-mono tracking-widest",
-        isSeconds ? "text-red-500" : "text-white"
-    )}>
-        {String(value).padStart(2, '0')}
+const TimerBox = ({ value, label, isRed }: { value: number; label: string, isRed?: boolean }) => (
+  <div className="flex flex-col items-center">
+    <div
+      className={cn(
+        "text-5xl md:text-7xl font-mono font-extrabold",
+        isRed ? "text-red-500" : "text-white"
+        )}
+      style={{
+        textShadow: isRed
+          ? '0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 0, 0, 0.5)'
+          : '0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5)',
+      }}
+    >
+      {String(value).padStart(2, '0')}
     </div>
+    <div className="mt-1 text-sm font-semibold uppercase tracking-widest text-gray-400">
+      {label}
+    </div>
+  </div>
 );
 
-const Colon = () => <div className="text-white font-bold font-mono tracking-widest pb-2">:</div>;
+const Colon = () => (
+    <div 
+        className="text-5xl md:text-7xl font-mono font-extrabold text-white self-center pb-8"
+        style={{
+             textShadow: '0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5)'
+        }}
+    >:</div>
+);
 
 export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) {
-    const { t } = useLanguage();
-    const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(calculateTimeLeft(targetDate));
+  const { t } = useLanguage();
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            const newTimeLeft = calculateTimeLeft(targetDate);
-            if (newTimeLeft) {
-                setTimeLeft(newTimeLeft);
-            } else {
-                clearInterval(timer);
-                onFinished();
-            }
-        }, 1000);
+  useEffect(() => {
+    setIsClient(true);
+    setTimeLeft(calculateTimeLeft(targetDate));
 
-        return () => clearInterval(timer);
-    }, [targetDate, onFinished]);
+    const timer = setInterval(() => {
+      const newTimeLeft = calculateTimeLeft(targetDate);
+      if (newTimeLeft) {
+          setTimeLeft(newTimeLeft);
+      } else {
+          clearInterval(timer);
+          setTimeLeft(null);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [targetDate]);
     
     return (
         <div 
@@ -65,21 +89,21 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
             style={{ background: `url('/zavertv.png') center center / cover no-repeat` }}
         >
             <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: '260px' }}>
-                 {timeLeft ? (
-                    <div className="bg-black rounded-lg pb-8 pt-7 px-8 inline-flex items-center justify-center gap-x-2">
-                        <div className="flex items-baseline gap-x-2 text-5xl">
-                            <TimeSlot value={timeLeft.days} />
-                            <Colon />
-                            <TimeSlot value={timeLeft.hours} />
-                            <Colon />
-                            <TimeSlot value={timeLeft.minutes} />
-                            <Colon />
-                            <TimeSlot value={timeLeft.seconds} isSeconds />
-                        </div>
-                    </div>
-                ) : (
-                    <div className="text-center text-2xl font-bold text-primary animate-pulse">
-                       {t('countdown_finished')}
+                 {isClient && (
+                    <div className="bg-black pb-8 pt-7 px-8 inline-flex items-start justify-center gap-x-3 md:gap-x-4">
+                        {timeLeft ? (
+                            <>
+                                <TimerBox value={timeLeft.days} label={t('countdown_days')} />
+                                <Colon />
+                                <TimerBox value={timeLeft.hours} label={t('countdown_hours')} />
+                                <Colon />
+                                <TimerBox value={timeLeft.minutes} label={t('countdown_minutes')} />
+                                <Colon />
+                                <TimerBox value={timeLeft.seconds} label={t('countdown_seconds')} isRed />
+                            </>
+                        ) : (
+                            <div className="h-[125px] w-[550px] rounded-md"></div>
+                        )}
                     </div>
                 )}
             </div>
