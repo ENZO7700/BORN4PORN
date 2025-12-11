@@ -102,5 +102,6 @@
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
     -webkit-touch-callout: none; /* Disable callouts, primarily for images on iOS */
+    overscroll-behavior-y: contain; /* Disable pull-to-refresh */
   }
 }
