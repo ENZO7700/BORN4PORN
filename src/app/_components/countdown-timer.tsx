@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useLanguage } from '@/context/language-context';
@@ -68,7 +69,7 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
 
             <div className="absolute inset-0 flex items-end justify-center pb-8 sm:pb-12 md:pb-16">
                  {timeLeft ? (
-                    <div className="bg-black/80 border border-white/10 rounded-xl shadow-2xl backdrop-blur-sm flex items-stretch justify-center gap-x-4 sm:gap-x-8 p-4 sm:p-6">
+                    <div className="bg-black/95 border border-white/10 rounded-xl shadow-2xl backdrop-blur-sm flex items-stretch justify-center gap-x-4 sm:gap-x-8 p-4 sm:p-6">
                         <TimeSlot value={timeLeft.days} label={t('countdown_days')} />
                         <TimeSlot value={timeLeft.hours} label={t('countdown_hours')} />
                         <TimeSlot value={timeLeft.minutes} label={t('countdown_minutes')} />
