@@ -1,56 +1,27 @@
 
 "use client";
 
-import { useFormState, useFormStatus } from 'react-dom';
-import { askCastingAssistant } from '@/app/actions';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Sparkles } from 'lucide-react';
-
-const initialState = {
-  answer: '',
-};
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" disabled={pending}>
-      {pending ? 'Thinking...' : 'Ask AI'}
-    </Button>
-  );
-}
+import { Sparkles, Info } from 'lucide-react';
 
 export function CastingAssistant() {
-  const [state, formAction] = useFormState(askCastingAssistant, initialState);
-
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 font-headline text-2xl tracking-tight md:text-3xl">
-          <Sparkles className="h-6 w-6 text-primary" />
-          AI Casting Assistant
+          <Info className="h-6 w-6 text-primary" />
+          Project Information
         </CardTitle>
         <CardDescription>
-          Have questions about the project, rules, or what we're looking for? Ask our AI assistant!
+          Key details about the "Born 4 Porn" project.
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form action={formAction} className="flex flex-col items-start gap-4 sm:flex-row">
-          <Input
-            name="question"
-            placeholder="e.g., What is the main prize for the winner?"
-            required
-            className="flex-1"
-          />
-          <SubmitButton />
-        </form>
-        {state.answer && (
-          <div className="mt-4 rounded-lg border bg-background p-4 text-sm">
-            <p className="font-semibold text-primary">AI Assistant:</p>
-            <p className="whitespace-pre-wrap">{state.answer}</p>
-          </div>
-        )}
+      <CardContent className="space-y-2 text-sm text-muted-foreground">
+        <p><strong>Project Goal:</strong> To create the first 18+ reality show in the CZ/SK region in a pay-per-view (PPV) model.</p>
+        <p><strong>Target Audience:</strong> Young adults (18–35) accustomed to paying for premium online content.</p>
+        <p><strong>Grand Prize:</strong> The winner receives a €50,000 prize and an exclusive contract.</p>
+        <p><strong>Format:</strong> A mix of reality TV, competitive tasks, and explicit "Erotic Match" performances rated by viewers, leading to eliminations until one champion remains.</p>
+         <p className="pt-2 text-xs italic">The interactive AI assistant is temporarily unavailable. For more details, please refer to the project documentation.</p>
       </CardContent>
     </Card>
   );

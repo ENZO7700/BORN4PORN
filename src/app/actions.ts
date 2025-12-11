@@ -2,9 +2,8 @@
 "use server";
 
 import { z } from "zod";
-import { getFirestore } from "firebase-admin/firestore";
-import { initializeAdminApp } from "@/firebase/admin";
-import { askCastingAssistantFlow } from "@/ai/flows/casting-assistant-flow";
+import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { initializeFirebase } from "@/firebase";
 
 // Schema for the casting form
 const CastingApplicationSchema = z.object({
@@ -33,35 +32,29 @@ export async function submitCastingApplication(prevState: any, formData: FormDat
     }
     
   try {
-    // Initialize Firebase Admin SDK
-    await initializeAdminApp();
-    const firestore = getFirestore();
-
-    // Add a new document with a generated ID
-    await firestore.collection("casting_applications").add({
+    // This will now fail gracefully if Firebase is not configured, but should work with the new rules
+    const { firestore } = initializeFirebase();
+    if (!firestore) throw new Error("Firestore is not initialized.");
+    
+    await addDoc(collection(firestore, "casting_applications"), {
       ...validatedFields.data,
-      submittedAt: new Date(),
+      submittedAt: serverTimestamp(),
     });
 
     return { status: "success", message: "Application submitted successfully! We will review it shortly.", errors: null };
   } catch (error) {
     console.error("Error submitting application:", error);
-    return { status: "error", message: "An unexpected error occurred. Please try again.", errors: null };
+    // Provide a more generic error as we don't use admin sdk anymore
+    return { status: "error", message: "An unexpected error occurred. Please try again later.", errors: null };
   }
 }
 
 
 export async function askCastingAssistant(prevState: any, formData: FormData) {
+  // This function is now a placeholder and does not call an AI.
   const question = formData.get("question") as string;
   if (!question) {
     return { answer: "Please ask a question." };
   }
-
-  try {
-    const answer = await askCastingAssistantFlow(question);
-    return { answer };
-  } catch (error) {
-    console.error("Error asking AI assistant:", error);
-    return { answer: "Sorry, I couldn't answer that question. Please try again." };
-  }
+  return { answer: "The AI assistant is currently offline for maintenance. Please check the project documentation for answers to your questions." };
 }
