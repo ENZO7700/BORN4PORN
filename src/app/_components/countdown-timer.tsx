@@ -62,7 +62,7 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
             className="relative w-screen h-screen text-white overflow-hidden"
             style={{ background: `url('/zavertv.png') center center / cover no-repeat` }}
         >
-            <div className="absolute bottom-[13.5%] left-0 right-0">
+            <div className="absolute left-0 right-0" style={{ bottom: '250px' }}>
                  {timeLeft ? (
                     <div className="flex items-stretch justify-center gap-x-4">
                         <TimeSlot value={timeLeft.days} />
