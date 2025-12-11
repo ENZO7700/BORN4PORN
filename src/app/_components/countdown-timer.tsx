@@ -18,7 +18,7 @@ interface TimeLeft {
 }
 
 const calculateTimeLeft = (targetDate: string): TimeLeft | null => {
-  const difference = +new Date(targetDate) - +new anio();
+  const difference = +new Date(targetDate) - +new Date();
   if (difference > 0) {
     return {
       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
