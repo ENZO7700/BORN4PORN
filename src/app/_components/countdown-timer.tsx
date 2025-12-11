@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useLanguage } from '@/context/language-context';
@@ -63,17 +64,19 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
             className="relative w-screen h-screen text-white overflow-hidden"
             style={{ background: `url('/zavertv.png') center center / cover no-repeat` }}
         >
-            <div className="absolute left-0 right-0 text-5xl" style={{ bottom: '300px' }}>
+            <div className="absolute left-0 right-0 text-5xl flex justify-center" style={{ bottom: '300px' }}>
                  {timeLeft ? (
                     <div className="flex justify-center">
-                        <div className="bg-black rounded-lg p-3 px-8 inline-flex items-center justify-center gap-x-4">
-                            <TimeSlot value={timeLeft.days} />
-                            <Colon />
-                            <TimeSlot value={timeLeft.hours} />
-                            <Colon />
-                            <TimeSlot value={timeLeft.minutes} />
-                            <Colon />
-                            <TimeSlot value={timeLeft.seconds} isSeconds />
+                        <div className="bg-black rounded-lg pt-3 pb-8 px-8 inline-flex items-center justify-center gap-x-2">
+                            <div className="flex items-baseline gap-x-2 text-5xl">
+                                <TimeSlot value={timeLeft.days} />
+                                <Colon />
+                                <TimeSlot value={timeLeft.hours} />
+                                <Colon />
+                                <TimeSlot value={timeLeft.minutes} />
+                                <Colon />
+                                <TimeSlot value={timeLeft.seconds} isSeconds />
+                            </div>
                         </div>
                     </div>
                 ) : (
