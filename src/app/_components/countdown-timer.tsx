@@ -32,7 +32,7 @@ const calculateTimeLeft = (targetDate: string): TimeLeft | null => {
 
 const TimeSlot = ({ value, isSeconds }: { value: number; isSeconds?: boolean }) => (
     <div className={cn(
-        "text-2xl font-bold font-mono tracking-widest",
+        "text-7xl font-bold font-mono tracking-widest",
         isSeconds ? "text-red-500" : "text-white"
     )}>
         {String(value).padStart(2, '0')}
@@ -64,11 +64,13 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
         >
             <div className="absolute left-0 right-0" style={{ bottom: '250px' }}>
                  {timeLeft ? (
-                    <div className="flex items-stretch justify-center gap-x-4">
-                        <TimeSlot value={timeLeft.days} />
-                        <TimeSlot value={timeLeft.hours} />
-                        <TimeSlot value={timeLeft.minutes} />
-                        <TimeSlot value={timeLeft.seconds} isSeconds />
+                    <div className="flex justify-center">
+                        <div className="bg-black rounded-lg p-4 inline-flex items-stretch justify-center gap-x-4">
+                            <TimeSlot value={timeLeft.days} />
+                            <TimeSlot value={timeLeft.hours} />
+                            <TimeSlot value={timeLeft.minutes} />
+                            <TimeSlot value={timeLeft.seconds} isSeconds />
+                        </div>
                     </div>
                 ) : (
                     <div className="text-center text-2xl font-bold text-primary animate-pulse">
