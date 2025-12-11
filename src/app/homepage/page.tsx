@@ -246,8 +246,8 @@ const marketKeys: ('market_global' | 'market_cz' | 'market_sk' | 'market_trend')
 
   if (isUserLoading || user) { // If loading or user exists, show a blank screen or loader to avoid flicker
       return (
-          <div className="flex min-h-screen w-full items-center justify-center bg-background">
-              <UnicornLogo className="h-16 w-16 animate-pulse text-primary" />
+          <div className="flex h-screen w-screen items-center justify-center bg-black">
+            <span className="text-4xl font-bold text-white">?</span>
           </div>
       )
   }

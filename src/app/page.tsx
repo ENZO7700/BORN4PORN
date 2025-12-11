@@ -4,7 +4,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { CountdownTimer } from './_components/countdown-timer';
-import { UnicornLogo } from '@/components/logo';
 
 const TARGET_DATE = "2025-12-21T16:00:00";
 
@@ -29,16 +28,16 @@ export default function HomePage() {
   
   if (!isClient) {
       return (
-          <div className="flex h-screen w-screen items-center justify-center bg-background">
-              <UnicornLogo className="h-16 w-16 animate-pulse text-primary" />
+          <div className="flex h-screen w-screen items-center justify-center bg-black">
+            <span className="text-4xl font-bold text-white">?</span>
           </div>
       );
   }
 
   if (isCountdownFinished) {
     return (
-        <div className="flex h-screen w-screen items-center justify-center bg-background">
-            <UnicornLogo className="h-16 w-16 animate-pulse text-primary" />
+        <div className="flex h-screen w-screen items-center justify-center bg-black">
+            <span className="text-4xl font-bold text-white">?</span>
         </div>
     );
   }

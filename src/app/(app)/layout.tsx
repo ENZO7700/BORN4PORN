@@ -6,7 +6,6 @@ import { SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from './_components/app-sidebar';
 import { AppHeader } from './_components/app-header';
 import { useUser } from '@/firebase';
-import { UnicornLogo } from '@/components/logo';
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const { user, isUserLoading } = useUser();
@@ -20,8 +19,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   if (isUserLoading || !user) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-background">
-        <UnicornLogo className="h-16 w-16 animate-pulse text-primary" />
+      <div className="flex h-screen w-screen items-center justify-center bg-black">
+        <span className="text-4xl font-bold text-white">?</span>
       </div>
     );
   }
