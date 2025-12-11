@@ -31,13 +31,17 @@ const calculateTimeLeft = (targetDate: string): TimeLeft | null => {
   return null;
 };
 
-const TimerBox = ({ value, label }: { value: number; label: string }) => (
+const TimerBox = ({ value, label, isRed }: { value: number; label: string, isRed?: boolean }) => (
   <div className="flex flex-col items-center">
     <div
-      className="text-5xl md:text-7xl font-mono font-extrabold text-white"
+      className={cn(
+        "text-5xl md:text-7xl font-mono font-extrabold",
+        isRed ? "text-red-500" : "text-white"
+        )}
       style={{
-        textShadow:
-          '0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5)',
+        textShadow: isRed
+          ? '0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 0, 0, 0.5)'
+          : '0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5)',
       }}
     >
       {String(value).padStart(2, '0')}
@@ -46,6 +50,15 @@ const TimerBox = ({ value, label }: { value: number; label: string }) => (
       {label}
     </div>
   </div>
+);
+
+const Colon = () => (
+    <div 
+        className="text-5xl md:text-7xl font-mono font-extrabold text-red-500 self-center pb-8"
+        style={{
+             textShadow: '0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 0, 0, 0.5)'
+        }}
+    >:</div>
 );
 
 export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) {
@@ -65,6 +78,7 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
       } else {
           // Keep the timer running but don't call onFinished
           clearInterval(timer);
+          setTimeLeft(null); // Reset to show placeholder
       }
     }, 1000);
 
@@ -78,16 +92,19 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
         >
             <div className="absolute left-0 right-0 flex justify-center" style={{ bottom: '260px' }}>
                  {isClient && (
-                    <div className="bg-black rounded-lg pb-8 pt-7 px-8 inline-flex items-start justify-center gap-x-6 md:gap-x-10">
+                    <div className="bg-black pb-8 pt-7 px-8 inline-flex items-start justify-center gap-x-3 md:gap-x-4">
                         {timeLeft ? (
                             <>
                                 <TimerBox value={timeLeft.days} label={t('countdown_days')} />
+                                <Colon />
                                 <TimerBox value={timeLeft.hours} label={t('countdown_hours')} />
+                                <Colon />
                                 <TimerBox value={timeLeft.minutes} label={t('countdown_minutes')} />
-                                <TimerBox value={timeLeft.seconds} label={t('countdown_seconds')} />
+                                <Colon />
+                                <TimerBox value={timeLeft.seconds} label={t('countdown_seconds')} isRed />
                             </>
                         ) : (
-                            <div className="bg-black h-[125px] w-[460px] rounded-md"></div>
+                            <div className="h-[125px] w-[550px] rounded-md"></div>
                         )}
                     </div>
                 )}
