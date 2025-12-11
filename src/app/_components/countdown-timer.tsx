@@ -33,12 +33,12 @@ const calculateTimeLeft = (targetDate: string): TimeLeft | null => {
 const TimeSlot = ({ value, label, isSeconds }: { value: number; label: string; isSeconds?: boolean }) => (
     <div className="flex flex-col items-center justify-center">
         <div className={cn(
-            "text-5xl sm:text-6xl font-bold font-mono tracking-tighter",
+            "text-5xl sm:text-6xl font-bold font-mono tracking-tighter drop-shadow-lg",
             isSeconds ? "text-red-500" : "text-white"
         )}>
             {String(value).padStart(2, '0')}
         </div>
-        <div className="text-xs sm:text-sm uppercase tracking-widest text-white/70 mt-1">{label}</div>
+        <div className="text-xs sm:text-sm uppercase tracking-widest text-white/70 drop-shadow-md mt-1">{label}</div>
     </div>
 );
 
@@ -63,13 +63,11 @@ export function CountdownTimer({ targetDate, onFinished }: CountdownTimerProps) 
     return (
         <div 
             className="relative w-screen h-screen text-white overflow-hidden"
-            style={{ background: `url('/born4-testcard.png') center center / cover no-repeat` }}
+            style={{ background: `url('/zavertv.png') center center / cover no-repeat` }}
         >
-            <div className="absolute inset-0 bg-black/70"></div>
-
             <div className="absolute inset-0 flex items-end justify-center pb-8 sm:pb-12 md:pb-16">
                  {timeLeft ? (
-                    <div className="bg-black/100 border border-white/10 rounded-xl shadow-2xl backdrop-blur-sm flex items-stretch justify-center gap-x-2 sm:gap-x-4 p-3 sm:p-4">
+                    <div className="flex items-stretch justify-center gap-x-2 sm:gap-x-4 p-3 sm:p-4">
                         <TimeSlot value={timeLeft.days} label={t('countdown_days')} />
                         <TimeSlot value={timeLeft.hours} label={t('countdown_hours')} />
                         <TimeSlot value={timeLeft.minutes} label={t('countdown_minutes')} />
