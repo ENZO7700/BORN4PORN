@@ -1,0 +1,95 @@
+
+{
+    "userAvatar": {
+        "src": "https://picsum.photos/seed/user-avatar/100/100",
+        "width": 100,
+        "height": 100,
+        "data-ai-hint": "person face"
+    },
+    "defaultAvatar": {
+        "src": "https://picsum.photos/seed/default-avatar/100/100",
+        "width": 100,
+        "height": 100,
+        "data-ai-hint": "abstract shape"
+    },
+    "userAvatars": {
+        "user1": {
+            "src": "https://picsum.photos/seed/user1/100/100",
+            "width": 100,
+            "height": 100,
+            "data-ai-hint": "person face"
+        },
+        "user2": {
+            "src": "https://picsum.photos/seed/user2/100/100",
+            "width": 100,
+            "height": 100,
+            "data-ai-hint": "person face"
+        },
+        "user3": {
+            "src": "https://picsum.photos/seed/user3/100/100",
+            "width": 100,
+            "height": 100,
+            "data-ai-hint": "person face"
+        },
+        "user4": {
+            "src": "https://picsum.photos/seed/user4/100/100",
+            "width": 100,
+            "height": 100,
+            "data-ai-hint": "person face"
+        },
+        "user5": {
+            "src": "https://picsum.photos/seed/user5/100/100",
+            "width": 100,
+            "height": 100,
+            "data-ai-hint": "person face"
+        }
+    },
+    "liveStreamBackground": {
+        "src": "https://picsum.photos/seed/live-bg/1280/720",
+        "width": 1280,
+        "height": 720,
+        "data-ai-hint": "dark room lights"
+    },
+    "homeHero": {
+        "src": "https://picsum.photos/seed/home-hero/1920/1080",
+        "width": 1920,
+        "height": 1080,
+        "data-ai-hint": "dark room lights"
+    },
+    "aboutUsHero": {
+        "src": "https://picsum.photos/seed/about-hero/1920/1080",
+        "width": 1920,
+        "height": 1080,
+        "data-ai-hint": "fantasy landscape dark"
+    },
+    "gametusyCard": {
+        "src": "https://picsum.photos/seed/gametusy-card/600/400",
+        "width": 600,
+        "height": 400,
+        "data-ai-hint": "fashion underwear product"
+    },
+    "gametusyHero": {
+        "src": "https://picsum.photos/seed/gametusy-hero/1920/800",
+        "width": 1920,
+        "height": 800,
+        "data-ai-hint": "fashion branding modern"
+    },
+    "gametusyGallery1": {
+        "src": "https://picsum.photos/seed/gallery1/800/600",
+        "width": 800,
+        "height": 600,
+        "data-ai-hint": "logo design dark"
+    },
+    "gametusyGallery2": {
+        "src": "https://picsum.photos/seed/gallery2/800/600",
+        "width": 800,
+        "height": 600,
+        "data-ai-hint": "website design modern"
+    },
+    "gametusyGallery3": {
+        "src": "https://picsum.photos/seed/gallery3/800/600",
+        "width": 800,
+        "height": 600,
+        "data-ai-hint": "social media post"
+    }
+}

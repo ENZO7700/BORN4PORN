@@ -1,0 +1,127 @@
+[debug] [2025-11-02T17:14:16.642Z] ----------------------------------------------------------------------
+[debug] [2025-11-02T17:14:16.646Z] Command:       /nix/store/ws50yvm6vzlzf7jzz6n7xh4szddrack1-nodejs-20.19.1/bin/node /home/user/.global_modules/bin/firebase hosting:channel:deploy 69
+[debug] [2025-11-02T17:14:16.646Z] CLI Version:   14.23.0
+[debug] [2025-11-02T17:14:16.647Z] Platform:      linux
+[debug] [2025-11-02T17:14:16.647Z] Node Version:  v20.19.1
+[debug] [2025-11-02T17:14:16.647Z] Time:          Sun Nov 02 2025 17:14:16 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-11-02T17:14:16.647Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-02T17:14:17.403Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:17.404Z] No OAuth tokens found
+[error] Failed to fetch Firebase Project from current Studio Workspace: Unable to refresh auth: not yet authenticated.
+[debug] [2025-11-02T17:14:17.409Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-02T17:14:17.410Z] > authorizing via signed-in user (enzoenzof2024@gmail.com)
+[debug] [2025-11-02T17:14:17.410Z] [iam] checking project studio-7565002595-1e406 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-11-02T17:14:17.411Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:17.411Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:17.411Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-02T17:14:17.411Z] > authorizing via signed-in user (enzoenzof2024@gmail.com)
+[debug] [2025-11-02T17:14:17.413Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/studio-7565002595-1e406:testIamPermissions [none]
+[debug] [2025-11-02T17:14:17.413Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/studio-7565002595-1e406:testIamPermissions x-goog-quota-user=projects/studio-7565002595-1e406
+[debug] [2025-11-02T17:14:17.413Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/studio-7565002595-1e406:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-02T17:14:18.147Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/studio-7565002595-1e406:testIamPermissions 200
+[debug] [2025-11-02T17:14:18.149Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/studio-7565002595-1e406:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-02T17:14:18.153Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:18.153Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:18.153Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-02T17:14:18.154Z] > authorizing via signed-in user (enzoenzof2024@gmail.com)
+[debug] [2025-11-02T17:14:18.154Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/studio-7565002595-1e406 [none]
+[debug] [2025-11-02T17:14:18.407Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/studio-7565002595-1e406 200
+[debug] [2025-11-02T17:14:18.407Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/studio-7565002595-1e406 {"projectId":"studio-7565002595-1e406","projectNumber":"787627428332","displayName":"Firebase app","name":"projects/studio-7565002595-1e406","resources":{"hostingSite":"studio-7565002595-1e406"},"state":"ACTIVE","etag":"1_550562fd-b243-4783-a13c-89f9f3f66c97"}
+[debug] [2025-11-02T17:14:18.417Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:18.422Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:18.422Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-02T17:14:18.423Z] > authorizing via signed-in user (enzoenzof2024@gmail.com)
+[debug] [2025-11-02T17:14:18.424Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels/69 [none]
+[debug] [2025-11-02T17:14:19.193Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels/69 404
+[debug] [2025-11-02T17:14:19.193Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels/69 {"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}
+[debug] [2025-11-02T17:14:19.201Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:19.201Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:19.201Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-02T17:14:19.202Z] > authorizing via signed-in user (enzoenzof2024@gmail.com)
+[debug] [2025-11-02T17:14:19.203Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels?channelId=69 [none]
+[debug] [2025-11-02T17:14:19.204Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels?channelId=69 {"ttl":"604800s"}
+[debug] [2025-11-02T17:14:19.469Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels?channelId=69 200
+[debug] [2025-11-02T17:14:19.471Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels?channelId=69 {"name":"projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels/69","url":"https://studio-7565002595-1e406--69-3ncnj8uu.web.app","createTime":"2025-11-02T17:14:19.378781483Z","updateTime":"2025-11-02T17:14:19.378781483Z","retainedReleaseCount":10,"expireTime":"2025-11-09T17:14:19.378781483Z"}
+[debug] [2025-11-02T17:14:19.471Z] [hosting] created new channnel for site studio-7565002595-1e406 {"name":"projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels/69","url":"https://studio-7565002595-1e406--69-3ncnj8uu.web.app","createTime":"2025-11-02T17:14:19.378781483Z","updateTime":"2025-11-02T17:14:19.378781483Z","retainedReleaseCount":10,"expireTime":"2025-11-09T17:14:19.378781483Z"}
+[info] ✔  hosting:channel: Channel 69 has been created on site studio-7565002595-1e406. 
+[debug] [2025-11-02T17:14:31.509Z] defaultcredentials: no credential available.
+[debug] [2025-11-02T17:14:31.511Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:31.511Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:31.511Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-02T17:14:31.512Z] > authorizing via signed-in user (enzoenzof2024@gmail.com)
+[debug] [2025-11-02T17:14:31.514Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites pageToken=&pageSize=10
+[debug] [2025-11-02T17:14:31.798Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites 200
+[debug] [2025-11-02T17:14:31.799Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites {"sites":[{"name":"projects/studio-7565002595-1e406/sites/studio-7565002595-1e406","defaultUrl":"https://studio-7565002595-1e406.web.app","appId":"1:787627428332:web:bc15b884eb11d7700198c9","type":"DEFAULT_SITE"}]}
+[debug] [2025-11-02T17:14:31.804Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:31.807Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:31.807Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-02T17:14:31.812Z] > authorizing via signed-in user (enzoenzof2024@gmail.com)
+[debug] [2025-11-02T17:14:31.812Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:787627428332:web:bc15b884eb11d7700198c9/config [none]
+[debug] [2025-11-02T17:14:32.498Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:787627428332:web:bc15b884eb11d7700198c9/config 200
+[debug] [2025-11-02T17:14:32.501Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:787627428332:web:bc15b884eb11d7700198c9/config {"projectId":"studio-7565002595-1e406","appId":"1:787627428332:web:bc15b884eb11d7700198c9","storageBucket":"studio-7565002595-1e406.firebasestorage.app","apiKey":"AIzaSyCG8IJjxebRCrwYKtkV8o21zWj8-kTk29I","authDomain":"studio-7565002595-1e406.firebaseapp.com","messagingSenderId":"787627428332","projectNumber":"787627428332","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 15.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-11-02T17:14:48.573Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:48.580Z] No OAuth tokens found
+[debug] [2025-11-02T17:14:48.584Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-02T17:14:48.585Z] > authorizing via signed-in user (enzoenzof2024@gmail.com)
+[debug] [2025-11-02T17:14:48.585Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels/69 [none]
+[debug] [2025-11-02T17:14:49.317Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels/69 200
+[debug] [2025-11-02T17:14:49.321Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels/69 {"name":"projects/studio-7565002595-1e406/sites/studio-7565002595-1e406/channels/69","url":"https://studio-7565002595-1e406--69-3ncnj8uu.web.app","createTime":"2025-11-02T17:14:19.378781483Z","updateTime":"2025-11-02T17:14:19.378781483Z","retainedReleaseCount":10,"expireTime":"2025-11-09T17:14:19.378781483Z"}
+[info]    ▲ Next.js 15.3.3
+
+[info]    - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Failed to compile.
+
+
+[info] ./src/app/(app)/_components/app-header.tsx
+Module not found: Can't resolve '@/components/ui/CtaButton'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./src/app/(app)/account/page.tsx
+Module not found: Can't resolve '@/componentsui/avatar'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./src/app/aboutus/page.tsx
+Module not found: Can't resolve '@/components/ui/CtaButton'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./src/app/register/page.tsx
+Module not found: Can't resolve '@/components/ui/CtaButton'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./src/ai/flows/casting-assistant-flow.ts
+Module not found: Package path ./zod is not exported from package /home/user/studio/node_modules/genkit (see exports field in /home/user/studio/node_modules/genkit/package.json)
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/app/actions.ts
+./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fuser%2Fstudio%2Fsrc%2Fapp%2Factions.ts%22%2C%5B%7B%22id%22%3A%2260cb9346f649aeb081bb3f66f2c495c4690ea468aa%22%2C%22exportedName%22%3A%22submitCastingApplication%22%7D%2C%7B%22id%22%3A%2260d5fa6809b135741295d18b6f997b76adc26bde4f%22%2C%22exportedName%22%3A%22askCastingAssistant%22%7D%5D%5D%5D&__client_imported__=true!
+
+
+[info] 
+
+[info] > Build failed because of webpack errors
+
+[debug] [2025-11-02T17:15:17.979Z] Error: ENOENT: no such file or directory, open '/home/user/studio/.next/server/middleware-manifest.json'
+[error] 
+[error] Error: An unexpected error has occurred.

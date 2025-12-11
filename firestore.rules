@@ -1,0 +1,125 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /**
+     * @description Manages user profiles.
+     * @path /users/{userId}
+     * @allow (create) An authenticated user can create their own profile.
+     * @allow (get) An authenticated user can read their own profile.
+     * @allow (update, delete) An authenticated user can update or delete their own profile.
+     * @allow (list) Listing users is allowed for any authenticated user (for dashboard prototype).
+     * @principle Enforces strict document ownership for single-doc operations, allows list for admin views.
+     */
+    match /users/{userId} {
+      allow create: if isOwner(userId) && request.resource.data.id == userId;
+      allow get, update, delete: if isOwner(userId);
+      allow list: if isSignedIn();
+    }
+
+    /**
+     * @description Manages pay-per-view events. Publicly readable.
+     * @path /ppv_events/{ppvEventId}
+     * @allow (get, list) Any user, authenticated or not, can read PPV event details.
+     * @deny (create, update, delete) Writing to this collection is disabled from the client.
+     * @principle Allows public read access, requires admin privileges (not client-side) for writes.
+     */
+    match /ppv_events/{ppvEventId} {
+      allow get, list: if true;
+      allow write: if false;
+    }
+
+    /**
+     * @description Manages user subscriptions. Enforces path-based ownership.
+     * @path /users/{userId}/subscriptions/{subscriptionId}
+     * @allow (read, write) A user can manage their own subscriptions.
+     * @deny Unauthenticated users or users trying to access other's subscriptions.
+     * @principle Enforces path-based ownership for subscriptions.
+     */
+    match /users/{userId}/subscriptions/{subscriptionId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    /**
+     * @description Manages user purchases. Enforces path-based ownership.
+     * @path /users/{userId}/purchases/{purchaseId}
+     * @allow (read, write) A user can manage their own purchases.
+     * @deny Unauthenticated users or users trying to access other's purchases.
+     * @principle Enforces path-based ownership for purchases.
+     */
+    match /users/{userId}/purchases/{purchaseId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    /**
+     * @description Manages contestant profiles. Publicly readable.
+     * @path /contestants/{contestantId}
+     * @allow (get, list) Any user, authenticated or not, can read contestant profiles.
+     * @deny (create, update, delete) Writing to this collection is disabled from the client.
+     * @principle Allows public read access, requires admin privileges (not client-side) for writes.
+     */
+    match /contestants/{contestantId} {
+      allow get, list: if true;
+      allow write: if false;
+    }
+
+    /**
+     * @description Manages archived video metadata. Publicly readable.
+     * @path /archive_videos/{videoId}
+     * @allow (get, list) Any user, authenticated or not, can read video metadata.
+     * @deny (create, update, delete) Writing to this collection is disabled from the client.
+     * @principle Allows public read access for video metadata.
+     */
+    match /archive_videos/{videoId} {
+        allow get, list: if true;
+        allow write: if false;
+    }
+
+    /**
+     * @description Manages votes cast by users.
+     * @path /votes/{voteId}
+     * @allow (create) Authenticated users can cast votes for themselves.
+     * @allow (get, list) Votes are publicly readable to allow tallying.
+     * @deny (update, delete) Votes are immutable.
+     * @principle Enforces ownership for creation and allows public reads for vote counting.
+     */
+    match /votes/{voteId} {
+      allow get, list: if true;
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    /**
+     * @description Manages live chat messages.
+     * @path /live_chat_messages/{messageId}
+     * @allow (list, create) Authenticated users can read chat history and create new messages.
+     * @deny (get, update, delete) Individual message access and modification is disallowed.
+     * @principle Allows real-time chat functionality for authenticated users.
+     */
+    match /live_chat_messages/{messageId} {
+      allow list, create: if isSignedIn();
+      allow get, update, delete: if false;
+    }
+
+    /**
+     * @description Manages casting applications submitted from the website.
+     * @path /casting_applications/{applicationId}
+     * @deny (read, write) All client-side access is denied. Applications can only be created via a trusted server environment (Firebase Admin SDK).
+     * @principle Secures sensitive application data by preventing any client-side interaction.
+     */
+    match /casting_applications/{applicationId} {
+      allow read, write: if false;
+    }
+  }
+}
+
+    
